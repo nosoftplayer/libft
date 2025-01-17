@@ -11,5 +11,7 @@ char	*ft_strrchr(const char *s, int c)
 			last = (char *)s;
 		s++;
 	}
-	return (NULL);
+	if ((char )c == '\0')
+		return ((char *) s);
+	return (last);
 }
