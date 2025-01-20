@@ -1,14 +1,14 @@
 #include "libft.h"
 
-static int	malloc_words(char **array, int position, size_t buffer)
+static int	malloc_words(char **array, int pos, size_t buffer)
 {
 	int	i;
 
-	array[position] = malloc(buffer);
+	array[pos] = malloc(buffer);
 	i = 0;
-	if (array[position] == NULL)
+	if (array[pos] == NULL)
 	{
-		while (i < position)
+		while (i < pos)
 			free(array[i++]);
 		free(array);
 		return (1);
@@ -43,7 +43,7 @@ static int	fill_array(char **array, char const *s, char c)
 	return (0);
 }
 
-static int	f_words_count(char const *s, char c)
+static int	word_count(char const *s, char c)
 {
 	int	count;
 
@@ -65,13 +65,13 @@ static int	f_words_count(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
-	int		v_words_count;
+	int		count;
 
-	v_words_count = f_words_count(s, c);
-	array = (char **)malloc((v_words_count + 1) * sizeof(char *));
+	count = word_count(s, c);
+	array = (char **)malloc((count + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
-	array[v_words_count] = NULL;
+	array[count] = NULL;
 	if (fill_array(array, s, c))
 	{
 		free(array);
@@ -79,23 +79,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (array);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char	str[100] = " AB CD E F";
-	char	**array;
-	array = ft_split(str, ' ');
-	if (!array)
-		return (1);
-	int i = 0;
-	while (array[i])
-	{
-		printf("%s\n", array[i]);
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-*/
