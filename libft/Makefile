@@ -14,30 +14,31 @@ SRCS =  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strl
 		ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 		ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-#BSRCS = ...
+BSRCS = ft_lstnew_bonus.c 
 
-OBJS = $(SRCS:%.c=%.o)
+OBJS = $(SRCS:.c=.o)
 
-#BOBJS = $(BSRCS:%_bonus.c=%.o)
+BOBJS = $(BSRCS:.c=.o)
 
 RM = rm -f
 
 all: $(NAME)
 
-$(NAME) : $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-#bonus = ...
+$(NAME) : $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+
+bonus:	$(OBJS) $(BOBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(BOBJS)
 
 clean:
-	$(RM) $(OBJS) #(BOBJS)
+	$(RM) $(OBJS) $(BOBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

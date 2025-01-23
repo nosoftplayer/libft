@@ -5,6 +5,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
 void	ft_bzero(void *s, size_t n);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
@@ -44,5 +50,7 @@ char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
+
+t_list	*ft_lstnew(void *content);
 
 #endif
