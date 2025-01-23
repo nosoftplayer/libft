@@ -15,9 +15,9 @@ static int	digits_count(int n)
 	return (i);
 }
 
-static char *fill(char *str, int n)
+static char	*fill(char *str, int n)
 {
-	int i;
+	int	i;
 
 	i = digits_count(n);
 	str[i] = '\0';

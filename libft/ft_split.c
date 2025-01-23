@@ -73,9 +73,6 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	array[count] = NULL;
 	if (fill_array(array, s, c))
-	{
-		free(array);
 		return (NULL);
-	}
 	return (array);
 }
