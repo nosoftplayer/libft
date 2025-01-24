@@ -6,7 +6,7 @@
 
   <!-- Short Description -->
   <p align="center">
-	  <b>[`42 Yerevan`](https://42yerevan.am/)</b><br>
+	  <b>42 Yerevan</b><br>
   </p>
 
   <h3>
