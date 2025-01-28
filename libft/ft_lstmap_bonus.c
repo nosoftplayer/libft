@@ -6,7 +6,7 @@
 /*   By: miyolchy <miyolchy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 02:35:15 by miyolchy          #+#    #+#             */
-/*   Updated: 2025/01/28 19:54:30 by miyolchy         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:16:52 by miyolchy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*node;
 	t_list	*new_lists;
+	void	*content;
 
 	if (!lst || !f || !del)
 		return (NULL);
 	new_lists = NULL;
 	while (lst)
 	{
-		void *content = f(lst->content);
+		content = f(lst->content);
 		node = ft_lstnew(content);
 		if (!node)
 		{
@@ -37,29 +38,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 }
 
 /*
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	t_list	*node;
-	t_list	*new_lists;
-
-	if (!lst || !f || !del)
-		return (NULL);
-	new_lists = NULL;
-	while (lst)
-	{
-		node = ft_lstnew(f(lst->content));
-		if (node)
-			ft_lstadd_back(&new_lists, node);
-		else
-		{
-			ft_lstclear(&new_lists, del);
-			return (NULL);
-		}
-		lst = lst->next;
-	}
-	return (new_lists);
-}
-
 #include <stdio.h>
 
 void	*print_content(void *content)
