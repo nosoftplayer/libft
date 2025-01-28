@@ -1,39 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miyolchy <miyolchy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 18:09:00 by miyolchy          #+#    #+#             */
-/*   Updated: 2025/01/28 01:28:38 by miyolchy         ###   ########.fr       */
+/*   Created: 2025/01/27 23:40:11 by miyolchy          #+#    #+#             */
+/*   Updated: 2025/01/27 23:47:47 by miyolchy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new_list)
+t_list	*ft_lstlast(t_list *lst)
 {
-	new_list->next = *lst;
-	*lst = new_list;
+	if (lst)
+	{
+		while (lst->next != NULL)
+			lst = lst->next;
+	}
+	return (lst);
 }
 /*
 #include <stdio.h>
 
 int main(void)
 {
-	t_list *first;
-	first = ft_lstnew("Hello,");
+	t_list *f, *s, *t, *q;
+	f = ft_lstnew("1");
+	s = ft_lstnew("2");
+	t = ft_lstnew("3");
+	q = ft_lstnew("4");
 	
-	t_list *second;
-	second = ft_lstnew(" world!");
-	
-	ft_lstadd_front(&second, first);
-	
-	printf("%s%s\n", (char *)first->content, (char *)first->next->content);
+	f->next = s;
+	s->next = t;
+	t->next = q;
+	q->next = NULL;
 
-	free(first);
-	free(first->next);
+	printf("Last list content = %s", (char *)ft_lstlast(f)->content);
 	
+	free(f);
+	free(s);
+	free(t);
+	free(q);
+
 	return (0);
-}*/
+}
+*/

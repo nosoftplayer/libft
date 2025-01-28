@@ -1,39 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miyolchy <miyolchy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 18:09:00 by miyolchy          #+#    #+#             */
-/*   Updated: 2025/01/28 01:28:38 by miyolchy         ###   ########.fr       */
+/*   Created: 2025/01/27 23:14:01 by miyolchy          #+#    #+#             */
+/*   Updated: 2025/01/28 01:25:22 by miyolchy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new_list)
+int	ft_lstsize(t_list *lst)
 {
-	new_list->next = *lst;
-	*lst = new_list;
+	int	size;
+
+	size = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		++size;
+	}
+	return (size);
 }
 /*
 #include <stdio.h>
 
 int main(void)
 {
-	t_list *first;
-	first = ft_lstnew("Hello,");
+	t_list *f, *s, *t, *q;
 	
-	t_list *second;
-	second = ft_lstnew(" world!");
-	
-	ft_lstadd_front(&second, first);
-	
-	printf("%s%s\n", (char *)first->content, (char *)first->next->content);
+	f = ft_lstnew("1");
+	s = ft_lstnew("2");
+	t = ft_lstnew("3");
+	q = ft_lstnew("4");
 
-	free(first);
-	free(first->next);
+	// ft_lstsize(NULL); size == 0;
+	// f->next = NULL;  size == 1;
+	f->next = s;
+	s->next = t;
+	t->next = q;
+	q->next = NULL;
+	
+	printf("%d\n", ft_lstsize(f));
+	// printf("%d\n", ft_lstsize(NULL));
+
+	free(f);
+	free(s);
+	free(t);
+	free(q);
 	
 	return (0);
-}*/
+}
+*/
