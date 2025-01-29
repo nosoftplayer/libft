@@ -6,7 +6,7 @@
 #    By: miyolchy <miyolchy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:16 by miyolchy          #+#    #+#              #
-#    Updated: 2025/01/28 02:35:53 by miyolchy         ###   ########.fr        #
+#    Updated: 2025/01/28 20:31:56 by miyolchy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,10 @@ RM = rm -f
 
 all: $(NAME)
 
-%.o: %.c
+%.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME) : $(OBJS)
+$(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 bonus:	$(OBJS) $(BOBJS)
